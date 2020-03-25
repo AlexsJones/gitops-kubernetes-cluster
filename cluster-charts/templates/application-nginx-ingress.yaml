@@ -4,7 +4,7 @@ metadata:
   name: nginx-ingress
   namespace: argocd
   finalizers:
-  - resources-finalizer.argocd.argoproj.io  
+  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: kube-system
@@ -19,3 +19,4 @@ spec:
       valueFiles:
       - values.yaml
     repoURL: https://kubernetes-charts.storage.googleapis.com/
+    targetRevision: 1.34.2
