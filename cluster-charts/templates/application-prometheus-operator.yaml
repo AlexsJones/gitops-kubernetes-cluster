@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: elasticsearch
+  name: elasticsearch
+spec:
+  destination:
+    namespace: default
+    server: {{ .Values.cluster }}
+  project: {{ .Values.project }}
+  source:
+    chart: elasticsearch
+    helm:
+      valueFiles:
+      - values.yaml
+    repoURL: https://helm.elastic.co
+    targetRevision: 7.6.1
