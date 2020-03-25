@@ -18,18 +18,6 @@ install-argocd:
 	#https://github.com/argoproj/argo-cd/blob/master/docs/faq.md
 	echo "Manually patch argo-server commands to --insecure"
 
-install-nginx:
-	helm install nginx  stable/nginx-ingress --set service.type=LoadBalancer --namespace kube-system
-
-install-cert-manager:
-	kubectl create namespace cert-manager || true
-	kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.14.0/cert-manager.crds.yaml
-	helm repo add jetstack https://charts.jetstack.io
-	helm repo update
-	helm install cert-manager jetstack/cert-manager --version v0.14.0
-
-install-prometheus:
-	kubectl create ns monitoring || true
-	helm install prometheus stable/prometheus-operator -n monitoring
+install-prometheus-ingress:
 	kubectl create -f resources/grafana-ingress.yaml -n monitoring
 	kubectl create secret tls grafana-tls --key keys/grafana.key --cert keys/grafana.cert -n monitoring

@@ -1,15 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus-operator
+  name: elasticsearch
 spec:
   destination:
-    namespace: monitoring
+    namespace: elasticsearch
     server: {{ .Values.cluster }}
   project: {{ .Values.project }}
   source:
-    chart: prometheus-operator
+    chart: elasticsearch
     helm:
       valueFiles:
       - values.yaml
-    repoURL: https://kubernetes-charts.storage.googleapis.com/
+    repoURL: https://helm.elastic.co
+    targetRevision: 7.6.1
