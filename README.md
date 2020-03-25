@@ -16,3 +16,9 @@ It leverages ArgoCD to pull in a Helm chart that launches additional ArgoCD appl
 - `make install-argocd`
 - `make install-prometheus-ingress`
 - Navigate to argocd.example.com and run a bootstrap application sync.
+
+![](images/Screenshot from 2020-03-25 20-31-50.png)
+
+The bootstrap process will install the Applications into GitOps as CRD.
+
+![](images/Screenshot from 2020-03-25 21-01-11.png)
