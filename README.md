@@ -21,4 +21,4 @@ It leverages ArgoCD to pull in a Helm chart that launches additional ArgoCD appl
 
 The bootstrap process will install the Applications into GitOps as CRD.
 
-![](images/Screenshot from 2020-03-25 21-01-11.png)
+![](images/Screenshot from 2020-03-25 21-08-49.png)
