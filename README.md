@@ -1,12 +1,18 @@
-# scaleway-cluster
+# GitOps-Kubernetes-cluster
 
-One of my cluster configurations on scaleway.
-Uses letsencrypt certs and expects keys to exist in `keys`:
-- `grafana.iamalexsjones.com`
-  - keys/grafana.cert
-  - keys/grafana.key
-- `argocd.iamalexsjones.com`
-  - keys/argocd.cert
-  - keys/argocd.key
+A snapshot of a cluster configuation I've used running on Scaleway.
+It leverages ArgoCD to pull in a Helm chart that launches additional ArgoCD applications.
 
 ![](images/scaleway.png)
+
+
+## Bootstrap
+
+- Generate certs for grafana & argocd with lets-encrypt
+  - keys/grafana.cert
+  - keys/grafana.key
+  - keys/argocd.key
+  - keys/argocd.cert
+- `make install-argocd`
+- `make install-prometheus-ingress`
+- Navigate to argocd.example.com and run a bootstrap application sync.
