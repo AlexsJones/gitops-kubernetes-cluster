@@ -1,4 +1,4 @@
-.PHONY: argocd nginx list
+.PHONY: install-argocd install-nginx install-cert-manager install-prometheus get-argocd-password get-grafana-password proxy-argocd-ui
 
 list:
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'
@@ -9,11 +9,9 @@ get-argocd-password:
 get-grafana-password:
 	kubectl get secret prometheus-grafana -o jsonpath="{.data.admin-password}" -n monitoring | base64 --decode ; echo
 
-proxy-argo-ui:
-	kubectl port-forward svc/argocd-server -n argocd 8080:443
-
 install-argocd:
 	kubectl create ns argocd
+	kubectl create ns argocd-applications
 	kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 	kubectl create -f resources/grafana-ingress.yaml -n argocd
 	kubectl create secret tls argocd-tls --key keys/argocd.key --cert keys/argocd.cert -n argocd
