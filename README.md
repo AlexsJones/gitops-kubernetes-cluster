@@ -16,6 +16,7 @@ It leverages ArgoCD to pull in a Helm chart that launches additional ArgoCD appl
 - `make install-argocd`
 - `make install-prometheus-ingress`
 - Navigate to argocd.example.com and run a bootstrap application sync.
+  - Or simply kubectl apply -f resources/application-bootstrap.yaml 
 
 ![](images/1.png)
 
