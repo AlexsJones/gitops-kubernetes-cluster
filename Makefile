@@ -1,4 +1,4 @@
-.PHONY: install-argoc get-argocd-password get-grafana-password proxy-argocd-ui check-argocd-ready
+.PHONY: install-argocd get-argocd-password get-grafana-password proxy-argocd-ui check-argocd-ready
 
 list:
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$'

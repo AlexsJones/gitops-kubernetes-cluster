@@ -15,5 +15,3 @@ spec:
       - values.yaml
     repoURL: https://kubernetes-charts.storage.googleapis.com/
     targetRevision: 8.12.3
-  syncPolicy:
-    automated: {}
