@@ -8,15 +8,7 @@ It leverages ArgoCD to pull in a Helm chart that launches additional ArgoCD appl
 
 ## Bootstrap
 
-- Generate certs for grafana & argocd with lets-encrypt
-  - keys/grafana.cert
-  - keys/grafana.key
-  - keys/argocd.key
-  - keys/argocd.cert
 - `make install-argocd`
-- `make install-prometheus-ingress`
-- Navigate to argocd.example.com and run a bootstrap application sync.
-  - Or simply kubectl apply -f resources/application-bootstrap.yaml 
 
 ![](images/1.png)
 
@@ -25,3 +17,14 @@ The bootstrap process will install the Applications into GitOps as CRD.
 ![](images/2.png)
 
 ![](images/3.png)
+
+### Optional ingress
+
+I have automatically loaded in resources for two ingress objects `grafana-ingress` and `argocd-ingress`
+Modify these and the certs below to match your domain.
+
+- Generate certs for grafana & argocd with lets-encrypt
+  - keys/grafana.cert
+  - keys/grafana.key
+  - keys/argocd.key
+  - keys/argocd.cert

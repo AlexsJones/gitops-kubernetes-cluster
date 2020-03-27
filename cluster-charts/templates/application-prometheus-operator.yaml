@@ -1,15 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus-operator
+  name: prometheus
   namespace: argocd
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     namespace: monitoring
-    server: {{ .Values.cluster }}
-  project: {{ .Values.project }}
+    server: https://kubernetes.default.svc
+  project: default
   source:
     chart: prometheus-operator
     helm:
@@ -17,3 +15,5 @@ spec:
       - values.yaml
     repoURL: https://kubernetes-charts.storage.googleapis.com/
     targetRevision: 8.12.3
+  syncPolicy:
+    automated: {}
