@@ -23,8 +23,7 @@ install-argocd:
 install-argocd-ingress:
 	kubectl create -f resources/argocd-ingress.yaml -n argocd
 	kubectl create secret tls argocd-tls --key keys/argocd.key --cert keys/argocd.cert -n argocd || true
-	#https://github.com/argoproj/argo-cd/blob/master/docs/faq.md
-	echo "Manually patch argo-server commands to --insecure"
+	kubectl patch deployment argocd-server --type json -p='[ { "op": "replace", "path":"/spec/template/spec/containers/0/command","value": ["argocd-server","--staticassets","/shared/app","--insecure"] }]' -n argocd
 
 install-grafana-ingress:
 	kubectl create -f resources/grafana-ingress.yaml -n monitoring
