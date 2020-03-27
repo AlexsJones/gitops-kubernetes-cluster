@@ -12,7 +12,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: prometheus-operator-grafana
+          serviceName: prometheus-grafana
           servicePort: 3000
   tls:
     - hosts:
