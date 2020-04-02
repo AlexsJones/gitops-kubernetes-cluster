@@ -6,6 +6,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    cert-manager.io/cluster-issuer: le-clusterissuer
 spec:
   rules:
   - host: grafana.iamalexsjones.com
@@ -17,6 +18,4 @@ spec:
   tls:
     - hosts:
       - grafana.iamalexsjones.com
-      secretName: grafana-tls
-      # sudo certbot certonly --preferred-challenges dns --manual -d grafana.iamalexsjones.com
-      # kubectl create secret tls grafana-tls --key privkey.pem --cert cert.pem -n monitoring
+      secretName: grafana-cert-manager-tls

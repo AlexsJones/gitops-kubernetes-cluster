@@ -22,9 +22,15 @@ install-argocd:
 
 install-argocd-ingress:
 	kubectl create -f resources/argocd-ingress.yaml -n argocd
-	kubectl create secret tls argocd-tls --key keys/argocd.key --cert keys/argocd.cert -n argocd || true
 	kubectl patch deployment argocd-server --type json -p='[ { "op": "replace", "path":"/spec/template/spec/containers/0/command","value": ["argocd-server","--staticassets","/shared/app","--insecure"] }]' -n argocd
 
 install-grafana-ingress:
 	kubectl create -f resources/grafana-ingress.yaml -n monitoring
-	kubectl create secret tls grafana-tls --key keys/grafana.key --cert keys/grafana.cert -n monitoring
+
+install-cert-manager:
+	helm repo add jetstack https://charts.jetstack.io
+	kubectl create namespace cert-manager
+	kubectl label namespace cert-manager cert-manager.k8s.io/disable-validation=true
+	kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v0.14.0/cert-manager.crds.yaml
+	helm install cert-manager --namespace cert-manager --version v0.14.0 jetstack/cert-manager
+	kubectl apply -f resources/letsencrypt-issuer.yaml

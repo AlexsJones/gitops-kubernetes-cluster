@@ -6,6 +6,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    cert-manager.io/cluster-issuer: le-clusterissuer
 spec:
   rules:
   - host: argocd.iamalexsjones.com
@@ -17,6 +18,4 @@ spec:
   tls:
     - hosts:
       - argocd.iamalexsjones.com
-      secretName: argocd-tls
-      # sudo certbot certonly --preferred-challenges dns --manual -d argocd.iamalexsjones.com
-      # kubectl create secret tls argo-tls --key privkey.pem --cert cert.pem -n argocd
+      secretName: argocd-cert-manager-tls

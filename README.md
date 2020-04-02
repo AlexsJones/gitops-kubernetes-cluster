@@ -20,11 +20,12 @@ The bootstrap process will install the Applications into GitOps as CRD.
 
 ### Optional ingress
 
-I have automatically loaded in resources for two ingress objects `grafana-ingress` and `argocd-ingress`
-Modify these and the certs below to match your domain.
 
-- Generate certs for grafana & argocd with lets-encrypt
-  - keys/grafana.cert
-  - keys/grafana.key
-  - keys/argocd.key
-  - keys/argocd.cert
+`make install-cert-manager`
+
+Once installed you can use cert-manager to install certs for grafana/argocd
+
+```
+make install-argocd-ingress
+make install-grafana-ingress
+```
