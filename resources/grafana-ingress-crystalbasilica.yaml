@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: argocd-ingress
+  name: grafana-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -9,13 +9,14 @@ metadata:
     cert-manager.io/cluster-issuer: le-clusterissuer
 spec:
   rules:
-  - host: argocd.iamalexsjones.com
+  - host: grafana.crystalbasilica.co.uk
     http:
       paths:
       - backend:
-          serviceName: argocd-server
-          servicePort: http
+          serviceName: prometheus-grafana
+          servicePort: 3000
   tls:
     - hosts:
-      - argocd.iamalexsjones.com
-      secretName: argocd-cert-manager-tls
+      - grafana.crystalbasilica.co.uk
+      secretName: grafana-cert-manager-cb-tls
+  
