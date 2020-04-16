@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: grafana-ingress
+  name: grafana-cb-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -19,4 +19,3 @@ spec:
     - hosts:
       - grafana.crystalbasilica.co.uk
       secretName: grafana-cert-manager-cb-tls
-  
