@@ -23,7 +23,9 @@ The bootstrap process will install the Applications into GitOps as CRD.
 
 `make install-cert-manager`
 
-Once installed you can use cert-manager to install certs for grafana/argocd
+Once installed you can use cert-manager to install certs for grafana/argocd.
+
+You will see the `resources` folder is tailored to my certs and domain names - make it your own and alter it.
 
 ```
 make install-argocd-ingress
