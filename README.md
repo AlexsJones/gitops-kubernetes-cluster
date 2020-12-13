@@ -1,5 +1,8 @@
 # GitOps-Kubernetes-cluster
 
+For more boiler plate examples and a complete Kubernetes setup checkout: https://github.com/AlexsJones/kube-microcosm
+
+
 A snapshot of a cluster configuation I've used running on Scaleway.
 It leverages ArgoCD to pull in a Helm chart that launches additional ArgoCD applications.
 
