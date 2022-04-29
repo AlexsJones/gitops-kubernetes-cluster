@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: harbor
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: harbor
+    server: {{ .Values.cluster }}
+  project: {{ .Values.project }}
+  source:
+    chart: harbor
+    helm:
+      valueFiles:
+      - values.yaml
+    repoURL: https://helm.goharbor.io
+    targetRevision: 1.4.0-dev
