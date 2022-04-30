@@ -11,9 +11,9 @@ spec:
     server: {{ .Values.cluster }}
   project: {{ .Values.project }}
   source:
-    chart: harbor
+    chart: harbor/harbor
     helm:
       valueFiles:
       - values.yaml
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 12.3.5
+    repoURL: https://helm.goharbor.io
+    targetRevision: 1.9.0
