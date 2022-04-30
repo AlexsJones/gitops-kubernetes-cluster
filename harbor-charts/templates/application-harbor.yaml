@@ -15,5 +15,5 @@ spec:
     helm:
       valueFiles:
       - values.yaml
-    repoURL: https://helm.goharbor.io
-    targetRevision: 1.4.0-dev
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 12.3.5
