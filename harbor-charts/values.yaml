@@ -4,3 +4,4 @@
 
 cluster: https://kubernetes.default.svc
 project: harbor
+adminPassword: Passw0rd
