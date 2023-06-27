@@ -1,21 +1,21 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: grafana-cb-ingress
+  name: elastic-cb-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    cert-manager.io/cluster-issuer: le-clusterissuer
+    cert-manager.io/cluster-issuer: iamdev
 spec:
   rules:
-  - host: grafana.crystalbasilica.co.uk
+  - host: elastic.walletzk.app
     http:
       paths:
       - backend:
-          serviceName: prometheus-grafana
-          servicePort: 3000
+          serviceName: elasticsearch-master-headless
+          servicePort: 9200
   tls:
     - hosts:
-      - grafana.crystalbasilica.co.uk
-      secretName: grafana-cert-manager-cb-tls
+      - elastic.walletzk.app
+      secretName: elastic-cert-manager-ctls

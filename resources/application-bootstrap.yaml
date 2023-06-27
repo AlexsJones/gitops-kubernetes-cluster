@@ -13,7 +13,7 @@ spec:
       valueFiles:
       - values.yaml
     path: cluster-charts
-    repoURL: https://github.com/AlexsJones/gitops-kubernetes-cluster.git
-    targetRevision: HEAD
+    repoURL: https://github.com/WalletZkApp/gitops-kubernetes-cluster.git
+    targetRevision: main
   syncPolicy:
     automated: {}

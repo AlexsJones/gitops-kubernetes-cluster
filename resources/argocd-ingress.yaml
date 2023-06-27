@@ -6,10 +6,10 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
-    cert-manager.io/cluster-issuer: le-clusterissuer
+    cert-manager.io/cluster-issuer: iamdev
 spec:
   rules:
-  - host: argocd.crystalbasilica.co.uk
+  - host: argocd.walletzk.app
     http:
       paths:
       - backend:
@@ -17,5 +17,5 @@ spec:
           servicePort: http
   tls:
     - hosts:
-      - argocd.crystalbasilica.co.uk
+      - argocd.walletzk.app
       secretName: argocd-cert-manager-ctls

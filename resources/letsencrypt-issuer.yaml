@@ -1,12 +1,12 @@
 apiVersion: cert-manager.io/v1alpha3
 kind: ClusterIssuer
 metadata:
-  name: le-clusterissuer
+  name: iamdev
 spec:
   acme:
-    email: alexsimonjones@gmail.com
+    email: iamdev@walletzk.app
     privateKeySecretRef:
-      name: le-clusterissuer
+      name: iamdev
     server: https://acme-v02.api.letsencrypt.org/directory
     solvers:
     - http01:
